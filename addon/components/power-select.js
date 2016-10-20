@@ -584,6 +584,9 @@ export default Component.extend({
   },
 
   updateState(changes) {
+    if (this.isDestroyed) {
+      return;
+    }
     let newState = set(this, 'publicAPI', assign({}, this.get('publicAPI'), changes));
     let registerAPI = this.get('registerAPI');
     if (registerAPI) {
